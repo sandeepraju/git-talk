@@ -1,6 +1,7 @@
 import os
+import Tkinter
 
-from ui import
+from ui import frames
 from utils import get_git_root, write_hook
 
 class GitTalk(object):
@@ -22,4 +23,7 @@ class GitTalk(object):
 
     def trigger(self):
         # TODO: implement trigger
+        root = Tkinter.Tk()
+        frames.VideoRecordControlFrame(root).pack()
+        root.mainloop()
         print 'TODO: trigger'

@@ -9,6 +9,8 @@ def run():
     can interact with Git Talk to configure or invoke various
     functionalities.
     """
+    # TODO: add a Tkiner check here
+
     parser = argparse.ArgumentParser(description='Audio & Video annotations to your code via Git')
     group = parser.add_mutually_exclusive_group(required=True)
 
