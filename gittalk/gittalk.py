@@ -3,6 +3,7 @@ import Tkinter
 
 from ui import frames
 from utils import get_git_root, write_hook
+from enable import HookInstaller
 
 class GitTalk(object):
     def __init__(self, *args, **kwargs):
@@ -10,16 +11,20 @@ class GitTalk(object):
 
     def enable(self):
         try:
-            git_root = get_git_root(os.getcwd())
-            commit_msg_hook = os.path.join(git_root, '.git', 'hooks', 'commit-msg')
-            write_hook(commit_msg_hook)
+            # git_root = get_git_root(os.getcwd())
+            # commit_msg_hook = os.path.join(git_root, '.git', 'hooks', 'commit-msg')
+            # write_hook(commit_msg_hook)
+            HookInstaller.addHook()
             print 'GitTalk enabled successfully!'
         except Exception as e:
             print 'GitTalk cannot be enabled. {}'.format(e.message)
 
     def disable(self):
-        # TODO: implement disable
-        print 'TODO: disable'
+        try:
+            HookInstaller.rmHook()
+            print 'GitTalk disabled successfully!'
+        except Exception as e:
+            print 'GitTalk cannot be disabled. {}'.format(e.message)
 
     def trigger(self):
         # TODO: implement trigger
