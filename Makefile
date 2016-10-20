@@ -17,8 +17,6 @@ install:
 uninstall:
 	yes | pip uninstall gittalk
 
-pylint: ; @for py in gittalk/*.py; do echo "Linting $$py"; pylint --list-msgs -rn $$py; done
-
 test:
 	python -m unittest discover -s ./tests -p 'test_*.py'
 
