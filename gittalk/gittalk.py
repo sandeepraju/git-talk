@@ -36,5 +36,5 @@ class GitTalk(object):
         # root = Tkinter.Tk()
         # frames.VideoRecordControlFrame(root).pack()
         # root.mainloop()
-        print parse_message('ashdihasi $$method=local, location=commit, title=Explain funcA$$')
+        print parse_message('ashdihasi $$method=record, location=commit, title=Explain funcA$$')
         # print 'TODO: trigger'
