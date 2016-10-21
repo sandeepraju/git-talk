@@ -10,24 +10,36 @@ try:
 	# audio and video command
 	av_cmd = ['ffmpeg',
 		'-f', 'avfoundation',
+		'c:v', 'rawvideo',
 		'-framerate', '30',
 		'-i', '"0:0"',
-		'/output/out.mp4']
+		'-y', '-f', 'mp4', 		
+		'-c:v', 'libx264', 
+		'-c:a', 'aac', 
+		'out.mp4']
 
 	# audio and screen grab command
 	as_cmd = ['ffmpeg',
 		'-f', 'avfoundation',
+		'c:v', 'rawvideo',
 		'-framerate', '30',
 		'-i', '"1:0"',
-		'/output/out.mp4']
+		'-y', 
+		'-f', 'mp4', 
+		'-c:v', 'libx264', 
+		'-c:a', 'aac', 
+		'out.mp4']
 
 	# audio command
 	a_cmd = ['ffmpeg',
 		'-f', 'avfoundation',
 		'-i', '"none:0"',
 		'-vn',
-		'c:a', 'aac'
-		'/output/out.mp4']
+		'c:a', 'aac',
+		'-y', '-vn', 
+		'-f', 'mp4', 
+		'-c:a', 'aac',
+		'out.mp4']
 
 	# parse argument for media type selection
 	if arg is 'v':
