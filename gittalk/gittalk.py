@@ -2,7 +2,7 @@ import os
 import Tkinter
 
 from ui import frames
-from utils import get_git_root, write_hook
+from utils import get_git_root, write_hook, parse_message
 from enable import HookInstaller
 
 class GitTalk(object):
@@ -33,7 +33,8 @@ class GitTalk(object):
 
     def trigger(self):
         # TODO: implement trigger
-        root = Tkinter.Tk()
-        frames.VideoRecordControlFrame(root).pack()
-        root.mainloop()
-        print 'TODO: trigger'
+        # root = Tkinter.Tk()
+        # frames.VideoRecordControlFrame(root).pack()
+        # root.mainloop()
+        print parse_message('ashdihasi $$method=local, location=commit, title=Explain funcA$$')
+        # print 'TODO: trigger'

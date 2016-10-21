@@ -1,5 +1,6 @@
 import re
-import upload_youtube
+# import upload_youtube
+import os
 
 # if no upload, simply don't include $$.*$$ in the commit message
 # if upload, include the following strings in the commit message:
@@ -32,8 +33,12 @@ def parse_message(message):
 
     # more codes to be added to use method etc.
 
-
-
-
-# print parse_message('ashdihasi $$method=record, location=commit, title=Explain funcA$$')
-
+    if method == 'record':
+        try:
+            os.system('./ffmpeg.sh v')
+        except KeyboardInterrupt:
+            print '\n\n\n\n\n\n\n\n\n\n\n\n\n HELLO'
+            pass
+        print 'Hello OKAY'
+    elif method == 'local':
+        os.system('')

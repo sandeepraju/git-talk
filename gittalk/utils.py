@@ -67,12 +67,12 @@ def parse_message(message):
     if method == 'record':
         os.system('gittalk/ffmpeg.sh v')
         url = upload_youtube.upload_youtube('./output.mp4')
+        print url
     elif method == 'local':
         root = Tkinter.Tk()
         frames.VideoRecordControlFrame(root).pack()
         root.mainloop()
 
-    print url
 
 
 

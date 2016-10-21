@@ -1,5 +1,6 @@
 import os
 import Tkinter, Tkconstants, tkFileDialog
+from gittalk import upload_youtube
 
 class VideoRecordControlFrame(Tkinter.Frame):
     def __init__(self, root):
@@ -33,7 +34,12 @@ class VideoRecordControlFrame(Tkinter.Frame):
             'title': 'Select a video file to upload'
         }
         filename = tkFileDialog.askopenfilename(**file_opt)
-        print 'TODO: upload file: {}'.format(filename)
+        # print 'TODO: upload file: {}'.format(filename)
+
+        url = upload_youtube.upload_youtube(filePath=str(filename), title='put title here', description='line1 description\nline2 description')
+        # upload_youtube.upload_youtube(filename)
         
         # close the window
         self._root.destroy()
+
+        print url
