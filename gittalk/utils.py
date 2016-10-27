@@ -1,9 +1,11 @@
 import os
 import re
+import sys
+import time
 from ui import frames
 import Tkinter
 import upload_youtube
-
+import subprocess as sp
 
 def get_git_root(cwd):
     git_root = os.path.abspath(cwd)
@@ -65,7 +67,22 @@ def parse_message(message):
     # more codes to be added to use method etc.
 
     if method == 'record':
-        os.system('gittalk/ffmpeg.sh v')
+        # os.system('gittalk/ffmpeg.sh v')
+        try:
+            ff = sp.Popen(['gittalk/ffmpeg.sh', 's'])
+            while True:
+                pass
+        except KeyboardInterrupt:
+            pass
+        except Exception, e:
+            print e
+        finally:
+            try:
+                ff.kill()
+            except OSError:
+                pass
+            print 'Recording stopped.'
+
         url = upload_youtube.upload_youtube('./output.mp4')
         print url
     elif method == 'local':

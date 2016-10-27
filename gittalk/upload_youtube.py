@@ -189,6 +189,7 @@ def upload_youtube(filePath, title="Test Title", description="Test Description",
   except HttpError, e:
     print "An HTTP error %d occurred:\n%s" % (e.resp.status, e.content)
 
+  print 'File uploaded. url: ' + str(url)
   return url
 
 #
