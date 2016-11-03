@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='gittalk',
@@ -15,7 +15,7 @@ setup(
     [console_scripts]
     gittalk=cli:run
     """,
-    packages=['gittalk'],
+    packages=find_packages(),
     py_modules=['cli'],
     install_requires=[
         # TODO: add deps
