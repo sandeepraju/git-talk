@@ -53,7 +53,7 @@ class GUI(Frame):
 		if val == 2:
 			print 'Using url: '+self.file_url
 		if val == 3:
-			print 'Using recorded file '+self.file_url
+			print 'Using recorded file '+self.file_path
 
 		# TODO: PASS FILE_PATH TO UPLOAD_YOUTUBE OR PASS FILE_URL TO GIT HOOK
 
@@ -119,8 +119,8 @@ class GUI(Frame):
 
 		option_frame2 = Frame(record_window)
 		Radiobutton(option_frame2, text='Audio & Screen Capture', padx=15, variable=self.v2, value=1).pack(anchor=NW, side=TOP)
-		Radiobutton(option_frame2, text='Audio & Screen Capture', padx=15, variable=self.v2, value=2).pack(anchor=NW, side=TOP)
-		Radiobutton(option_frame2, text='Audio & Screen Capture', padx=15, variable=self.v2, value=3).pack(anchor=NW, side=TOP)
+		Radiobutton(option_frame2, text='Audio & Webcam', padx=15, variable=self.v2, value=2).pack(anchor=NW, side=TOP)
+		Radiobutton(option_frame2, text='Audio', padx=15, variable=self.v2, value=3).pack(anchor=NW, side=TOP)
 
 		self.status = Label(record_window, text='Ready', justify=LEFT)
 		self.status.pack(side=TOP, anchor=W)
