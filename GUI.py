@@ -13,6 +13,7 @@ class GUI(Frame):
 		self.file_path = ''
 		self.file_url = ''
 		self.root.title('GitTalk')
+		self.done = False
 
 		# TITLE FRAME
 		title_frame = Frame(self.root)
@@ -32,15 +33,15 @@ class GUI(Frame):
 
 		# BUTTON FRAME
 		button_frame = Frame(self.root)		
-		Button(button_frame, text='Finish', command=self.done).pack(side=RIGHT)
-		Button(button_frame, text='Cancel', command=self.root.destroy).pack(side=RIGHT)
+		Button(button_frame, text='Finish', command=self.finish).pack(side=RIGHT)
+		Button(button_frame, text='Cancel', command=self.cancel).pack(side=RIGHT)
 		button_frame.pack(side=TOP, anchor=W, expand=1, fill=X)
 		# -----------
 
 		self.root.mainloop()
 
 
-	def done(self):
+	def finish(self):
 		val = self.v1.get()
 		title = self.file_title.get()
 		if title == '':
@@ -57,7 +58,35 @@ class GUI(Frame):
 
 		# TODO: PASS FILE_PATH TO UPLOAD_YOUTUBE OR PASS FILE_URL TO GIT HOOK
 
+		self.done = True
 		self.root.destroy()
+
+
+	def cancel(self):
+		self.root.destroy()
+
+
+	# GET METHODS
+	# -----------------------------------------------------------
+	def get_input(self):
+	""" returns tuple. first element is file path/url, second element specifies whether to upload or not"""
+
+		if not self.is_done():
+			raise Exception
+
+		val = self.v1.get()
+		if val == 0:
+			print 'User has not selected anything yet'
+			raise Exception
+		if val == 1 or val == 3:
+			print 'Upload file from: '+self.file_path
+			return (self.file_path, True)
+		if val == 2:
+			print 'Use URL: '+self.file_url
+			return (self.file_url, False)
+
+	def is_done(self):
+		return self.done
 
 
 
