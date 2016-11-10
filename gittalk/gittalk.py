@@ -1,9 +1,10 @@
 import os
 import Tkinter
 
-from ui import frames
-from utils import get_git_root, write_hook, parse_message
+# from ui import frames
+from utils import get_git_root
 from hook import Hook
+from gui import GUI
 
 class GitTalk(object):
     def __init__(self, *args, **kwargs):
@@ -37,4 +38,11 @@ class GitTalk(object):
         # frames.VideoRecordControlFrame(root).pack()
         # root.mainloop()
         # print parse_message('ashdihasi $$method=record, location=commit, title=Explain funcA$$')
-        print 'TODO: trigger'
+        commit_file_path = os.environ.get('GITTALK_COMMIT_MSG', None)
+        commit_message = ''
+        if commit_file_path:
+            with open(commit_file_path, 'r+') as f:
+                commit_message = f.read()
+
+        window = GUI(commit_message=commit_message)
+        window.show()
