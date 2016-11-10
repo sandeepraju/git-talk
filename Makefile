@@ -1,6 +1,6 @@
 .PHONY: all clean build install uninstall pylint test push
 
-all: clean
+all: uninstall clean build install
 
 clean:
 	find . -name \*.pyc -delete

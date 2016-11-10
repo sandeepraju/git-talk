@@ -1,1 +1,0 @@
-from gittalk import GitTalk
