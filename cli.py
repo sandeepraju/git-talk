@@ -1,7 +1,8 @@
 import argparse
+import os
 
 from gittalk import GitTalk
-from gittalk.utils import which
+from gittalk.utils import which, make_sure_path_exists
 
 def run():
     """ 
@@ -19,6 +20,9 @@ def run():
 
     if not which('ffmpeg'):
         print 'Please make sure FFmpeg is installed before using GitTalk!'
+
+    # create a folder to be used by GitTalk
+    make_sure_path_exists(os.path.join(os.environ['HOME'], '.gittalk'))
 
     parser = argparse.ArgumentParser(description='Audio & Video annotations to your code via Git')
     group = parser.add_mutually_exclusive_group(required=True)

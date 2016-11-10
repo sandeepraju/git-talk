@@ -2,6 +2,7 @@ import os
 import re
 import sys
 import time
+import errno
 # from ui import frames
 import Tkinter
 import upload_youtube
@@ -123,6 +124,10 @@ def get_git_root(cwd):
 #         frames.VideoRecordControlFrame(root).pack()
 #         root.mainloop()
 
-
-
+def make_sure_path_exists(path):
+    try:
+        os.makedirs(path)
+    except OSError as exception:
+        if exception.errno != errno.EEXIST:
+            raise
 

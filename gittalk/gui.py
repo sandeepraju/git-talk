@@ -1,6 +1,9 @@
 from Tkinter import *
 import tkFileDialog
 import os
+from capture import FFmpeg
+from utils import VIDEO
+from upload import upload_to_youtube
 
 class GUI(Frame):
     def __init__(self, commit_message):
@@ -13,6 +16,8 @@ class GUI(Frame):
         self.file_url = ''
         self.root.title('GitTalk')
         self.done = False
+
+        self.commit_message = commit_message
 
         # TITLE FRAME
         title_frame = Frame(self.root)
@@ -193,11 +198,19 @@ class GUI(Frame):
 
     def start_record(self):
         # TODO: CHECK IF ALREADY RECORDED - ASK FOR OVERWRITE
+        # print 'RECORD HERE'
+        self.ffmpeg = FFmpeg()
+        self.proc = self.ffmpeg.start(VIDEO, os.path.join(os.environ['HOME'], '.gittalk/output.mp4'))
         self.status.config(text='Recording..')
-        print 'RECORD HERE'
 
     def stop_record(self):
         # TODO: GET FILE PATH AND PASS IT TO UPLOADING FUNCTION
+        if self.proc:
+            self.ffmpeg.stop(self.proc)
         self.status.config(text='Done')
-        print 'STOP RECORDING HERE'
+
+        # upload to youtube here
+        video_file_path = os.path.join(os.environ['HOME'], '.gittalk/output.mp4')
+        upload_to_youtube(video_file_path, self.commit_message, self.commit_message)
+
     # -----------------------------------------------------------
