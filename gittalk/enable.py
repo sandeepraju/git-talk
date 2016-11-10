@@ -39,7 +39,7 @@ class HookInstaller:
             # writes to commit-msg
             if head_loc == -1:
                 hook_file.seek(0, 2)
-                with open(os.path.abspath(os.path.dirname(os.path.realpath(__file__)) + "/assets/hooks/commit-msg.py"), "r") as hook:
+                with open(os.path.abspath("./gittalk/assets/hooks/commit-msg"), "r") as hook:
                     for line in hook:
                         hook_file.write(line)
             else:

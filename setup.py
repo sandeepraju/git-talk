@@ -13,15 +13,12 @@ setup(
     download_url='https://github.com/sandeepraju/git-talk/archive/master.zip',
     entry_points="""
     [console_scripts]
-    gittalk=src.cli:run
+    gittalk=cli:run
     """,
     packages=find_packages(),
-    py_modules=['src'],
+    py_modules=['cli'],
     install_requires=[
         # TODO: add deps
-        'httplib2',
-        'google-api-python-client',
-        'oauth2client',
     ],
     tests_require=[
         'pylint==1.6.4'

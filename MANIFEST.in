@@ -1,1 +1,1 @@
-include LICENSE README.md src/assets/hooks/commit-msg
+include LICENSE README.md gittalk/assets/hooks/commit-msg

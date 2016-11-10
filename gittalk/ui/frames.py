@@ -1,6 +1,6 @@
 import os
 import Tkinter, Tkconstants, tkFileDialog
-import src.upload_youtube
+from gittalk import upload_youtube
 
 class VideoRecordControlFrame(Tkinter.Frame):
     def __init__(self, root):
@@ -9,19 +9,19 @@ class VideoRecordControlFrame(Tkinter.Frame):
 
         # options for buttons
         button_opt = {
-            'fill': Tkconstants.BOTH,
-            'padx': 5,
+            'fill': Tkconstants.BOTH, 
+            'padx': 5, 
             'pady': 5
         }
 
-        Tkinter.Button(self, text='Select Video',
+        Tkinter.Button(self, text='Select Video', 
             command=self.ask_open_filename).pack(**button_opt)
 
     def ask_open_filename(self):
         file_opt = {
             # 'defaultextension': '.mp4',
             'filetypes': [
-                ('All files', '.*'),
+                ('All files', '.*'), 
                 ('MPEG 4', '.mp4'),
                 ('Windows Media Video', '.wmv'),
                 ('Web Media', '.webm'),
@@ -38,7 +38,7 @@ class VideoRecordControlFrame(Tkinter.Frame):
 
         url = upload_youtube.upload_youtube(filePath=str(filename), title='put title here', description='line1 description\nline2 description')
         # upload_youtube.upload_youtube(filename)
-
+        
         # close the window
         self._root.destroy()
 

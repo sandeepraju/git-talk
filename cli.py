@@ -1,14 +1,15 @@
 import argparse
+
 from gittalk import GitTalk
 
 def run():
-    """
+    """ 
     `run` drives the command line interface for Git Talk.
     It exposes a command line interface through which users
     can interact with Git Talk to configure or invoke various
     functionalities.
     """
-    # TODO: add a Tkinter check here
+    # TODO: add a Tkiner check here
 
     parser = argparse.ArgumentParser(description='Audio & Video annotations to your code via Git')
     group = parser.add_mutually_exclusive_group(required=True)
