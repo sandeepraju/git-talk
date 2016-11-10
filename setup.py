@@ -7,7 +7,7 @@ setup(
     long_description=('For more information, visit:'
                       ' https://github.com/sandeepraju/git-talk'),
     author='Team Git Talk',
-    author_email='whats-our-email@u.northwestern.edu',  # TODO: add a valid email here
+    author_email='gittalk338@gmail.com',
     license=open('LICENSE', 'r').read(),
     url='https://github.com/sandeepraju/git-talk',
     download_url='https://github.com/sandeepraju/git-talk/archive/master.zip',
