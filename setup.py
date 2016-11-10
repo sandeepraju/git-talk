@@ -15,6 +15,7 @@ setup(
     [console_scripts]
     gittalk=cli:run
     """,
+    include_package_data=True,
     packages=find_packages(),
     py_modules=['cli'],
     install_requires=[

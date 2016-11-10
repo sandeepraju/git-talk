@@ -1,6 +1,7 @@
 import argparse
 
 from gittalk import GitTalk
+from gittalk.utils import which
 
 def run():
     """ 
@@ -9,7 +10,15 @@ def run():
     can interact with Git Talk to configure or invoke various
     functionalities.
     """
-    # TODO: add a Tkiner check here
+
+    # do explict dependency checks
+    try:
+        import Tkinter
+    except Exception as e:
+        print 'Make sure your Python has Tkinter installed before using GitTalk!'
+
+    if not which('ffmpeg'):
+        print 'Please make sure FFmpeg is installed before using GitTalk!'
 
     parser = argparse.ArgumentParser(description='Audio & Video annotations to your code via Git')
     group = parser.add_mutually_exclusive_group(required=True)
@@ -28,15 +37,13 @@ def run():
     gt = GitTalk()
     if args.enable:
         gt.enable()
-        return
 
-    if args.disable:
+    elif args.disable:
         gt.disable()
-        return
 
-    if args.trigger:
+    elif args.trigger:
         gt.trigger()
-        return
+
 
 if __name__ == '__main__':
     run()
