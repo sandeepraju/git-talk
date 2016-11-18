@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='gittalk',
-    version='0.0.1a0',
+    name='git-talk',
+    version='0.0.5a0',
     description='Audio & video annotations for your code with Git!',
     long_description=('For more information, visit:'
                       ' https://github.com/sandeepraju/git-talk'),
@@ -19,10 +19,12 @@ setup(
     packages=find_packages(),
     py_modules=['cli'],
     install_requires=[
-        # TODO: add deps
+        'httplib2',
+        'google-api-python-client',
+        'oauth2client'
     ],
     tests_require=[
-        'pylint==1.6.4'
+        'pylint==1.6.4',
     ],
     keywords=[
         'git', 'developer', 'audio', 'video',

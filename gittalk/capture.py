@@ -115,7 +115,7 @@ class FFmpeg(object):
         p = subprocess.Popen(cmd, stdin=subprocess.PIPE, 
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-        print ' '.join(cmd)
+        # print ' '.join(cmd)
         self.pid = p
         return p
 

@@ -130,11 +130,12 @@ def resumable_upload(insert_request):
   retry = 0
   while response is None:
     try:
-      print "Uploading file..."
+      # print "Uploading file..."
       status, response = insert_request.next_chunk()
       if response is not None:
         if 'id' in response:
-          print "Video id '%s' was successfully uploaded." % response['id']
+          # print "Video id '%s' was successfully uploaded." % response['id']
+          print "Video: https://www.youtube.com/watch?v={}".format(response['id'])
         else:
           exit("The upload failed with an unexpected response: %s" % response)
     except HttpError, e:
@@ -169,14 +170,14 @@ def upload_to_youtube(file_path, title, description):
     default="")
   argparser.add_argument("--privacyStatus", choices=VALID_PRIVACY_STATUSES,
     default=VALID_PRIVACY_STATUSES[2], help="Video privacy status.")
-  args = argparser.parse_args(['--file', file_path, '--title', title, '--description', description])
+  args = argparser.parse_args(['--file', file_path]) # , '--title', title, '--description', description])
 
   if not os.path.exists(args.file):
     exit("Please specify a valid file using the --file= parameter.")
 
   youtube = get_authenticated_service(args)
   try:
-    url = initialize_upload(youtube, args)
-    print url
+    initialize_upload(youtube, args)
+    # print url
   except HttpError, e:
     print "An HTTP error %d occurred:\n%s" % (e.resp.status, e.content)
