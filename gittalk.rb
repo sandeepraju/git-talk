@@ -6,7 +6,7 @@ class Gittalk < Formula
   desc "338"
   homepage "https://github.com/sandeepraju/git-talk"
   url "https://github.com/sandeepraju/git-talk/archive/0.0.5a0.tar.gz"
-  sha256 "b49d5a3d5cc2b5c63cf576e6d919252705fa1aa8edf1cc03377a92189c975e7e"
+  sha256 "407b927ef676504ed5cec610f71a82de2d02ed836fdd3fae814c6533bc84d650"
   version '0.9'
 
   # depends_on "cmake" => :build
