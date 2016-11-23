@@ -3,6 +3,8 @@
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 
 class Gittalk < Formula
+  depends_on "ffmpeg" => :run
+  
   desc "338"
   homepage "https://github.com/sandeepraju/git-talk"
   url "https://github.com/sandeepraju/git-talk/archive/0.0.5a0.tar.gz"
