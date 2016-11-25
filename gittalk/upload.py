@@ -1,4 +1,5 @@
 
+import logging
 import httplib
 import httplib2
 import os
@@ -17,6 +18,9 @@ from oauth2client.tools import argparser, run_flow
 # Explicitly tell the underlying HTTP transport library not to retry, since
 # we are handling retry logic ourselves.
 httplib2.RETRIES = 1
+
+logger = logging.getLogger()
+logger.setLevel(logging.CRITICAL)
 
 # Maximum number of times to retry before giving up.
 MAX_RETRIES = 10
@@ -170,7 +174,7 @@ def upload_to_youtube(file_path, title, description):
     default="")
   argparser.add_argument("--privacyStatus", choices=VALID_PRIVACY_STATUSES,
     default=VALID_PRIVACY_STATUSES[2], help="Video privacy status.")
-  args = argparser.parse_args(['--file', file_path]) # , '--title', title, '--description', description])
+  args = argparser.parse_args(['--file', file_path, '--title', title, '--description', description])
 
   if not os.path.exists(args.file):
     exit("Please specify a valid file using the --file= parameter.")
@@ -178,6 +182,5 @@ def upload_to_youtube(file_path, title, description):
   youtube = get_authenticated_service(args)
   try:
     initialize_upload(youtube, args)
-    # print url
   except HttpError, e:
     print "An HTTP error %d occurred:\n%s" % (e.resp.status, e.content)

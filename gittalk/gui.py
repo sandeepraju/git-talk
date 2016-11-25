@@ -66,15 +66,14 @@ class GUI(Frame):
         title = self.file_title.get()
         if title == '':
             title = 'Default title here'
-        print 'Title: '+title
-        if val == 0:
-            print 'No option selected'
-        if val == 1:
-            print 'Using file: '+self.file_path
-        if val == 2:
-            print 'Using url: '+self.file_url
-        if val == 3:
-            print 'Using recorded file '+self.file_path
+        # if val == 0:
+        #     print 'No option selected'
+        # if val == 1:
+        #     print 'Using file: '+self.file_path
+        # if val == 2:
+        #     print 'Using url: '+self.file_url
+        # if val == 3:
+        #     print 'Using recorded file '+self.file_path
 
         # TODO: PASS FILE_PATH TO UPLOAD_YOUTUBE OR PASS FILE_URL TO GIT HOOK
 

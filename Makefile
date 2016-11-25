@@ -1,4 +1,4 @@
-.PHONY: all clean build install uninstall pylint test push
+.PHONY: all clean build install uninstall test upload
 
 all: clean
 
@@ -12,7 +12,7 @@ build:
 	python setup.py sdist
 
 install:
-	pip install --upgrade dist/git-talk-*.tar.gz
+	pip install dist/git-talk-*.tar.gz
 
 uninstall:
 	yes | pip uninstall git-talk
