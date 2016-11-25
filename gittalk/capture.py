@@ -1,5 +1,4 @@
 import subprocess
-from Tkinter import *
 
 AUDIO, VIDEO, SCREEN = 0, 1, 2
 LINUX, MAC, WINDOWS = 0, 1, 2
@@ -115,7 +114,6 @@ class FFmpeg(object):
         p = subprocess.Popen(cmd, stdin=subprocess.PIPE, 
             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-        # print ' '.join(cmd)
         self.pid = p
         return p
 
@@ -133,32 +131,3 @@ class FFmpeg(object):
 
         cmd = self.generateCmdString(kind, outputPath)
         return self.run(cmd)
-        
-
-# class Gui(object):
-#     def __init__(self):
-#         self.ffmpeg = FFmpeg()
-#         self.proc = None
-
-#     def onStart(self):
-#         self.proc = self.ffmpeg.start(VIDEO, './output.mp4')
-
-#     def onStop(self):
-#         if self.proc:
-#             self.ffmpeg.stop(self.proc)
-
-#     def show(self):
-#         root = Tk()
-#         button = Button(root, text='Start', command=self.onStart)
-#         button.pack(pady=20, padx = 20)
-#         button = Button(root, text='Stop', command=self.onStop)
-#         button.pack(pady=20, padx = 20)
-#         root.mainloop()
-
-
-# def main():
-#     gui = Gui()
-#     gui.show()
-
-# if __name__ == '__main__':
-#     main()
