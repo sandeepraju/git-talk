@@ -12,7 +12,7 @@ build:
 	python setup.py sdist
 
 install:
-	pip install dist/git-talk-*.tar.gz
+	pip install --upgrade dist/git-talk-*.tar.gz
 
 uninstall:
 	yes | pip uninstall git-talk
@@ -20,5 +20,5 @@ uninstall:
 test:
 	python -m unittest discover -s ./tests -p 'test_*.py'
 
-push:
+upload:
 	python setup.py sdist upload -r pypi

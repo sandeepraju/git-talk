@@ -4,7 +4,5 @@ audio &amp; video annotations for your code with Git!
 ## Installation
 
 ```
-pip install gittalk
+pip install git-talk
 ```
-
-something
