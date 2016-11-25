@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='git-talk',
-    version='0.0.5a0',
+    version='0.0.6a0',
     description='Audio & video annotations for your code with Git!',
     long_description=('For more information, visit:'
                       ' https://github.com/sandeepraju/git-talk'),
