@@ -32,4 +32,3 @@ class GitTalk(object):
                 commit_message = f.read()
 
         window = GUI(commit_message=commit_message)
-        window.show()
