@@ -115,11 +115,11 @@ class FFmpeg(object):
         return cmd
 
     def run(self, cmd):
-        import sys
-        p = subprocess.Popen(cmd, stdin=subprocess.PIPE, 
-            stdout=sys.stdout, stderr=sys.stdout)
+        # import sys
         # p = subprocess.Popen(cmd, stdin=subprocess.PIPE, 
-        #     stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        #     stdout=sys.stdout, stderr=sys.stdout)
+        p = subprocess.Popen(cmd, stdin=subprocess.PIPE, 
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         self.pid = p
         return p

@@ -102,3 +102,4 @@ class GUI:
         upload_to_youtube(
             video_file_path, self.commit_message, self.commit_message)
 
+        self.root.destroy()
