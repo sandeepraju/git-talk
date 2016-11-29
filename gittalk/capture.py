@@ -49,17 +49,17 @@ class FFmpeg(object):
 
         self.audioDevices = {
             LINUX: '', # TODO
-            MAC: '\"none:0\"'
+            MAC: 'none:0'
         }
 
         self.videoDevices = {
             LINUX: '/dev/video0',  # try to detect this,
-            MAC: '\"0:0\"'
+            MAC: '0:0'
         }
 
         self.screenDevices = {
             LINUX: '', # TODO
-            MAC: '\"1:none\"'
+            MAC: '1:none'
         }
 
         platform = detectPlatform()
@@ -72,17 +72,23 @@ class FFmpeg(object):
                 ('-vn',),
                 ('-c:a', 'aac')
             ],
+            # VIDEO: [
+            #     ('-f', self.formats[platform]),
+            #     ('-c:v', 'rawvideo'),
+            #     ('-i', self.videoDevices[platform]),
+            #     ('-qscale:v', '5'),
+            #     ('-y',),
+            #     ('-f', 'mp4'),
+            #     ('-c:v', 'mpeg4'),
+            #     ('-c:a', 'aac') 
+            # ],
             VIDEO: [
+                ('-r', '30'),
                 ('-f', self.formats[platform]),
-                ('-c:v', 'rawvideo'),
-                ('-i', self.videoDevices[platform]),
-                ('-qscale:v', '5'),
-                ('-y',),
-                ('-f', 'mp4'),
-                ('-c:v', 'mpeg4'),
-                ('-c:a', 'aac') 
+                ('-i', self.videoDevices[platform])
             ],
             SCREEN: [
+                ('-r', '20'),
                 ('-f', self.formats[platform]),
                 ('-c:v', 'rawvideo'),
                 ('-an',),
@@ -131,4 +137,6 @@ class FFmpeg(object):
             raise Exception("Invalid option")
 
         cmd = self.generateCmdString(kind, outputPath)
+        # with open('/tmp/gt.log', 'a') as log:
+        #     log.write(' '.join(cmd) + '\n')
         return self.run(cmd)
