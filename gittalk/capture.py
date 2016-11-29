@@ -88,7 +88,7 @@ class FFmpeg(object):
                 ('-i', self.videoDevices[platform])
             ],
             SCREEN: [
-                ('-r', '20'),
+                ('-r', '30'),
                 ('-f', self.formats[platform]),
                 ('-c:v', 'rawvideo'),
                 ('-an',),
