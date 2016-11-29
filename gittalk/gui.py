@@ -32,6 +32,8 @@ class GUI:
 
         # set the dimensions of the screen
         # and where it is placed
+        # self.root.lift()
+        # self.root.attributes("-topmost", True)
         self.root.geometry('%dx%d+%d+%d' % (w, h, x, y))
         self.root.mainloop()
 
@@ -41,9 +43,9 @@ class GUI:
 
         # FRAME 1
         self.frame = tk.Frame(self.root)
-        tk.Button(self.frame, text='Capture', command=lambda: self.addFrame2(
+        tk.Button(self.frame, text='Screen Capture', command=lambda: self.addFrame2(
             SCREEN)).pack(anchor=tk.N, fill=tk.BOTH)
-        tk.Button(self.frame, text='Video', command=lambda: self.addFrame2(
+        tk.Button(self.frame, text='Web Cam Recording', command=lambda: self.addFrame2(
             VIDEO)).pack(anchor=tk.S, fill=tk.BOTH)
         self.frame.pack(side=tk.TOP, anchor=tk.W, expand=1, fill=tk.X)
         # -----------
@@ -85,6 +87,7 @@ class GUI:
         # TODO: CHECK IF ALREADY RECORDED - ASK FOR OVERWRITE
         # print 'RECORD HERE'
         self.addFrame3()
+        # self.root.iconify()
         self.ffmpeg = FFmpeg()
         self.proc = self.ffmpeg.start(type, os.path.join(
             os.environ['HOME'], '.gittalk/output.mp4'))
