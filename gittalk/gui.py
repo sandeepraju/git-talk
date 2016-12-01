@@ -14,7 +14,8 @@ class GUI:
         self.ffmpeg = None
 
         # start gui
-        self.addFrame1()
+        # self.addFrame1()
+        self.key_rec()
         self.show()
 
     def show(self):
@@ -49,6 +50,39 @@ class GUI:
             VIDEO)).pack(anchor=tk.S, fill=tk.BOTH)
         self.frame.pack(side=tk.TOP, anchor=tk.W, expand=1, fill=tk.X)
         # -----------
+
+    def key_rec(self):
+    ''' Record with one key'''
+    	self.root.title('GitTalk')
+    	self.frame = tk.Frame(self.root)
+    	label = tk.StringVar()
+    	tk.Label(self.frame, text='').pack(anchor=tk.N, fill=tk.BOTH)
+    	label.set('Press S for a screen capture\nPress V for a webcam recording\nPress Q to quit')
+
+    	key = ''
+    	while True:
+    		key = raw_input().lower()
+    		if key == 's' or key == 'v' or key == 'q':
+    			break
+
+    	if key == 'q':
+    		self.root.destroy()
+    		return
+		
+		self.ffmpeg = FFmpeg()
+    	if key == 'v':
+    		self.proc = self.ffmpeg.start(VIDEO, os.path.join(os.environ['HOME'], '.gittalk/output.mp4'))
+    		label.set('Recording webcam video...\nPress Q to stop recording')
+    	if key == 's':
+    		self.proc = self.ffmpeg.start(SCREEN, os.path.join(os.environ['HOME'], '.gittalk/output.mp4'))
+    		label.set('Recording screen capture...\nPress Q to stop recording')
+
+    	key = ''
+    	while True:
+    		key = raw_input().lower()
+    		if key == 'q':
+    			self.stop_record()
+
 
     def addFrame2(self, type):
         '''  '''
