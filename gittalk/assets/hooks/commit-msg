@@ -1,8 +1,9 @@
 ##### gittalk hook (begin) #####
+exec < /dev/tty
 if [ ! -d "$GIT_DIR/rebase-merge" ]; then
 export LANG="en_US.UTF-8"
 # export PATH="<TODO add current path from --enable>:$PATH"
 export COMMIT_FILE_PATH=$1
-GITTALK_COMMIT_MSG=$1 gittalk --trigger >> "$COMMIT_FILE_PATH"
+GITTALK_COMMIT_MSG=$1 gittalk --trigger >> "$COMMIT_FILE_PATH" < /dev/stdin
 fi
 ##### gittalk hook (end) #####
