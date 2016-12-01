@@ -3,6 +3,8 @@ import os
 from utils import get_git_root
 from hook import Hook
 from gui import GUI
+from capture import FFmpeg, VIDEO, SCREEN
+from upload import upload_to_youtube
 
 class GitTalk(object):
     def __init__(self, *args, **kwargs):
@@ -31,4 +33,28 @@ class GitTalk(object):
             with open(commit_file_path, 'r+') as f:
                 commit_message = f.read()
 
-        window = GUI(commit_message=commit_message)
+        config_path = os.path.join(
+            os.environ['HOME'], '.gittalk/.config')
+        if os.path.isfile(config_path):
+            while True:
+                raw_input('>> press ENTER to start')
+                mode = open(config_path, 'r').read().strip().lower()
+                ffmpeg = FFmpeg()
+                proc = None
+                if mode == 'screen':
+                    proc = ffmpeg.start(SCREEN, os.path.join(
+                    os.environ['HOME'], '.gittalk/output.mp4'))
+                else:
+                    proc = ffmpeg.start(VIDEO, os.path.join(
+                    os.environ['HOME'], '.gittalk/output.mp4'))
+
+                raw_input('>> press ENTER to stop')
+                ffmpeg.stop(proc)
+
+                video_file_path = os.path.join(
+                    os.environ['HOME'], '.gittalk/output.mp4')
+                upload_to_youtube(
+                    video_file_path, self.commit_message, self.commit_message)
+        else:
+            window = GUI(commit_message=commit_message)
+
