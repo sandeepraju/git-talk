@@ -1,4 +1,5 @@
 import os
+import sys
 
 from utils import get_git_root
 from hook import Hook
@@ -37,7 +38,8 @@ class GitTalk(object):
             os.environ['HOME'], '.gittalk/.config')
         if os.path.isfile(config_path):
             while True:
-                raw_input('>> press ENTER to start')
+                sys.stderr.write('>> press ENTER to start')
+                raw_input()
                 mode = open(config_path, 'r').read().strip().lower()
                 ffmpeg = FFmpeg()
                 proc = None
@@ -48,13 +50,15 @@ class GitTalk(object):
                     proc = ffmpeg.start(VIDEO, os.path.join(
                     os.environ['HOME'], '.gittalk/output.mp4'))
 
-                raw_input('>> press ENTER to stop')
+                sys.stderr.write('>> press ENTER to stop')
+                raw_input()
                 ffmpeg.stop(proc)
 
                 video_file_path = os.path.join(
                     os.environ['HOME'], '.gittalk/output.mp4')
                 upload_to_youtube(
-                    video_file_path, self.commit_message, self.commit_message)
+                    video_file_path, commit_message, commit_message)
+                break
         else:
             window = GUI(commit_message=commit_message)
 
