@@ -24,7 +24,7 @@ setup(
         'oauth2client'
     ],
     tests_require=[
-        'pylint==1.6.4',
+        'pylint==4.0.9',
     ],
     keywords=[
         'git', 'developer', 'audio', 'video',
